@@ -72,6 +72,7 @@ var Population = function(popsize){
 			var parent_one_dna = this.select_parent().dna
 			var parent_two_dna = this.select_parent().dna
 			var child_dna = parent_one_dna.crossover(parent_two_dna)
+			child_dna.mutate
 			newRockets[i] = new Rocket(child_dna)
 		}
 		this.rockets = newRockets
@@ -135,7 +136,7 @@ var DNA = function(genes){
 		this.genes = [];
 		for (var i=0; i < total_frames ; i++){
 			this.genes[i] = p5.Vector.random2D();
-			this.genes[i].setMag(0.9)
+			this.genes[i].setMag(0.3)
 		}
 	}
 
@@ -149,7 +150,17 @@ var DNA = function(genes){
 				newgenes[i] = parent_two_dna.genes[i]
 			}
 		}
+
 		return new DNA(newgenes)
+	}
+
+	this.mutate = function(){
+		for(var i=0;i<this.genes.length;i++){
+			if(random(1)< .01){
+				this.genes[i] = p5.Vector.random2D();
+				this.genes[i].setMag(0.3)
+			}
+		}
 	}
 	
 }
