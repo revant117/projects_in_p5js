@@ -5,29 +5,50 @@ var no =0
 var frames_para
 var para
 var target
+var button
+var slider
+var slider_heading
+var slider_value
+
 
 function setup() {
 	createCanvas(640, 480);
-	population = new Population(15)
+	population = new Population(30)
 	frames_para = createP()
 	para = createP()
+	slider_heading = createP()
+	slider_value = createP()
+	para.html("Generation :" + no)
+	slider_heading.html("Choose the population size ,click play")
+	slider = createSlider(0, 40, 30);
+	slider.html(slider.value())
+	slider.parent(slider_heading)
 	target = createVector(width/2 , 50)
+	button = createButton('play');
+	button.position(15, 15);
+	button.mousePressed(changeBG);
 }
 
 function draw() {
 	background(0)
 	ellipse(target.x , target.y , 20 , 20)
 	population.run()
-	frames_para.html(frames)
+	slider_value.html(slider.value())
+	frames_para.html("Life (ends at 200) :"+ frames)
 	frames++
 	if(frames == total_frames){
 		no ++
-		para.html(no)
+		para.html("Generation :" + no)
 		population.evaluate()
 		population.selection()
 		frames = 0
 	}
 
+}
+
+function changeBG() {
+	population = new Population(slider.value())
+	no = 0
 }
 
 var Population = function(popsize){
