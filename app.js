@@ -20,6 +20,11 @@ app.get('/genetic', function(req, res) {
 	}
 )
 
+app.get('/planes', function(req, res) {
+  res.sendfile('public/planes.html' , { root : __dirname})
+	}
+)
+
 app.listen(port, function() {
 	console.log("Listening on port " + port )
 })
