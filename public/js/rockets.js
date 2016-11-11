@@ -2,6 +2,7 @@ var population
 var total_frames = 200
 var frames = 0
 var no =0
+var canvas
 var frames_para
 var para
 var target
@@ -9,31 +10,41 @@ var button
 var slider
 var slider_heading
 var slider_value
+var mydiv
 
 
 function setup() {
-	createCanvas(640, 480);
+	canvas = createCanvas(640, 480);
+  	canvas.class("canvas");
+  	mydiv = createDiv("")
+  	mydiv.class("info")
 	population = new Population(30)
 	frames_para = createP()
 	para = createP()
 	slider_heading = createP()
 	slider_value = createP()
 	para.html("Generation :" + no)
-	slider_heading.html("Choose the population size ,click play")
+	slider_heading.html("Choose the population size , click start")
 	slider = createSlider(0, 40, 30);
 	slider.html(slider.value())
 	slider.parent(slider_heading)
+
+	slider_heading.parent(mydiv)
+	slider_value.parent(mydiv)
+	frames_para.parent(mydiv)
+	para.parent(mydiv)
+
 	target = createVector(width/2 , 50)
-	button = createButton('play');
-	button.position(15, 15);
+	button = createButton('Start');
 	button.mousePressed(changeBG);
+	button.parent(mydiv)
 }
 
 function draw() {
 	background(0)
 	ellipse(target.x , target.y , 20 , 20)
 	population.run()
-	slider_value.html(slider.value())
+	slider_value.html("Population size : " + slider.value())
 	frames_para.html("Life (ends at 200) :"+ frames)
 	frames++
 	if(frames == total_frames){

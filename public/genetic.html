@@ -6,11 +6,29 @@
 	<script language="javascript" type="text/javascript" src="js/libraries/p5.play.js"></script>
 
 		 <script language="javascript" type="text/javascript" src="js/rockets.js"></script> 
+		  <link rel="stylesheet" href="css/style.css">
 
 	<!-- this line removes any default padding and style. you might only need one of these values set. -->
 	<style> body {padding: 0; margin: 0;} </style>
 </head>
 
 <body>
+	<div class="genetic_read_me">
+		<p>
+			This is a very basic implementation of genetic algorithm .
+			
+		</p>
+		<p>
+			Here a random population of rockets learn how to reach a target over several generation through "evolution".
+			Each rocket has a DNA and each DNA has a set of genes. The genes tell the rocket how it should fly around . Initially all rockets fly randomly , but the ones that can reach closer to the targets are considered more fit and so have a higher probability to share their genes with the next generation.
+		</p>
+
+		<p>
+			<h4>
+				Eventually after a few generations rockets stop flying randomly and start flying closer and closer to the target .
+			</h4> 
+			There is also a small amount of mutation in play that randomly mutates some genes when they are being transfered to the next generation.
+		</p>
+	</div>
 </body>
 </html>

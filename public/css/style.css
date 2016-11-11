@@ -7,3 +7,13 @@ body {
   display: flex;
 
 }
+
+.info {
+	width: 640px;
+	padding-left: 20px;
+}
+
+.genetic_read_me {
+	width: 40%;
+	padding:10px;
+}
